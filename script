@@ -1,0 +1,3 @@
+split -l 26  --numeric-suffixes=1 --suffix-length=4 --additional-suffix=.xyz trajW1-5.xyz traj ### TO SPLIT A BIG TRAJECTORY TO INDIVIDUAL XYZ FILES 
+for i in {0001..6000}; do sed '1s/0001/'$i'/g' movie.pml  > tmp.pml; sed -i '32s/1/'$i'/' tmp.pml ; pymol -c tmp.pml ; done ### TO GENERATE THE IMAGE WITH EACH XYZ FILE
+ffmpeg -framerate 24 -i version%04d.png  -pix_fmt yuv420p out1.mp4 ### TO CREATE THE MOVIE BY CLUBBING ALL THE IMAGE FILES.
